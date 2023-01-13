@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 03:47:09 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 06:09:39 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/01/14 02:53:56 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/01/14 05:17:33 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *buf1, const void *buf2, size_t n)
+static void	delall(t_list *lst, void (*del)(void *))
 {
-	unsigned char	*b1;
-	unsigned char	*b2;
-	unsigned int	i;
+	if (lst == NULL)
+		return ;
+	delall(lst->next, del);
+	ft_lstdelone(lst, del);
+}
 
-	b1 = (unsigned char *)buf1;
-	b2 = (unsigned char *)buf2;
-	i = 0;
-	while (i < n)
-	{
-		b1[i] = b2[i];
-		i++;
-	}
-	return ((void *)b1);
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	if (lst == NULL || del == NULL)
+		return ;
+	delall(*lst, del);
 }

@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 07:27:21 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 06:21:01 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/01/14 01:57:26 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/01/14 02:04:08 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	i;
+	size_t			len;
+	unsigned int	i;
 
-	if (c == '\0')
-		return ((char *)(s + ft_strlen(s)));
+	len = ft_strlen(s);
 	i = 0;
-	while (s[i] != '\0')
+	while (i < len)
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
+		f(i, &s[i]);
 		i++;
 	}
-	return (NULL);
 }
 
 // #include <stdio.h>
-// #include <string.h>
-// int main(void)
+// void	test(unsigned int i, char *c)
 // {
-//     char *s = "123453ab";
-//     printf("%c\n", *(ft_strchr(s, '3') + 1));
-//     printf("%c\n", *(ft_strchr(s, '\0') - 1));
-//     if (ft_strchr(s, 'c') == NULL)
-//         printf("NULL\n");
+// 	if (i > 4)
+// 	{
+// 		if (ft_isalpha(*c))
+// 			*c = '1';
+// 		else
+// 			*c = '0';
+// 	}
+// }
+
+// int	main(void)
+// {
+// 	char s[] = "aiueo12345aiueo";
+
+// 	ft_striteri(s, test);
+//     printf("%s\n", s);
 // }

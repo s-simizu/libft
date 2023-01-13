@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 06:51:07 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/12 10:52:42 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 01:50:07 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static size_t	count_strs(char const *s, char c)
 	return (counter);
 }
 
-static char	*create_str(char const *src, char c, size_t len)
+static char	*create_str(char const *src, size_t len)
 {
 	char	*s;
 
@@ -57,10 +57,9 @@ static char	*create_str(char const *src, char c, size_t len)
 
 static int	store_strs(char **strs, size_t len, char const *src, char c)
 {
-	char const	*p;
-	char const	*prev;
-	char		*s;
-	int			i;
+	char const		*p;
+	char const		*prev;
+	unsigned int	i;
 
 	p = ft_strchr(src, c);
 	prev = src;
@@ -71,7 +70,7 @@ static int	store_strs(char **strs, size_t len, char const *src, char c)
 		{
 			if (p == NULL)
 				p = src + ft_strlen(src);
-			strs[i] = create_str(prev, c, p - prev);
+			strs[i] = create_str(prev, p - prev);
 			if (strs[i] == NULL)
 				return (-1);
 			i++;

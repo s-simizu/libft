@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:26:57 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/11 22:05:45 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 01:51:41 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static int	found(const char *substr, const char *needle, int nlen)
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	hlen;
-	size_t	nlen;
-	int		i;
+	size_t			hlen;
+	size_t			nlen;
+	unsigned int	i;
 
 	hlen = ft_strlen(haystack);
 	nlen = ft_strlen(needle);

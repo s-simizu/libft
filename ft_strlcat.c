@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 06:16:06 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/12 05:36:46 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 06:22:22 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	dstlen;
-	size_t	expected;
+	size_t	dlen;
+	size_t	ret;
 	int		i;
 
-	dstlen = ft_strlen(dst);
-	if (dstlen < dstsize)
-		expected = dstlen + ft_strlen(src);
+	dlen = ft_strlen(dst);
+	if (dlen < dstsize)
+		ret = dlen + ft_strlen(src);
 	else
-		expected = dstsize + ft_strlen(src);
+		ret = dstsize + ft_strlen(src);
 	if (dstsize == 0)
-		return (expected);
+		return (ret);
 	i = 0;
-	while (dstlen + i < dstsize - 1)
+	while (dlen + i < dstsize - 1)
 	{
 		if (src[i] == '\0')
 			break ;
-		dst[dstlen + i] = src[i];
+		dst[dlen + i] = src[i];
 		i++;
 	}
-	dst[dstlen + i] = '\0';
-	return (expected);
+	dst[dlen + i] = '\0';
+	return (ret);
 }
 
 // #include <stdio.h>

@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 05:18:36 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/11 06:30:52 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 01:50:29 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	if (dstsize == 0)

@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 07:27:21 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 06:21:01 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/01/14 02:07:35 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/01/14 02:11:18 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
+	size_t	len;
 
-	if (c == '\0')
-		return ((char *)(s + ft_strlen(s)));
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			return ((char *)(s + i));
-		i++;
-	}
-	return (NULL);
+	len = ft_strlen(s);
+	write(fd, s, len);
 }
 
-// #include <stdio.h>
-// #include <string.h>
 // int main(void)
 // {
-//     char *s = "123453ab";
-//     printf("%c\n", *(ft_strchr(s, '3') + 1));
-//     printf("%c\n", *(ft_strchr(s, '\0') - 1));
-//     if (ft_strchr(s, 'c') == NULL)
-//         printf("NULL\n");
+//     ft_putstr_fd("aiueo", 1);
 // }

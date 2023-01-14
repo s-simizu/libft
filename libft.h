@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 05:36:55 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 09:12:38 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 // void				ft_lstadd_front(t_list **lst, t_list *new); //test
 // t_list				*ft_lstlast(t_list *lst); //test
 // int					ft_lstsize(t_list *lst); //test
-// char	*ft_strdup(const char *s1); //test
-// int	ft_toupper(int c); //test
+// char	            *ft_strdup(const char *s1); //test
+// int	                ft_toupper(int c); //test
 
 #endif

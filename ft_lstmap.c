@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 03:09:44 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 05:36:01 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 09:12:48 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ static int	addmap(t_list **new, t_list *lst, void *(*f)(void *))
 {
 	t_list	*node;
 
+	if (lst == NULL)
+		return (0);
 	node = ft_lstnew(f(lst->content));
 	if (node == NULL)
 		return (-1);
 	ft_lstadd_back(new, node);
-	if (lst->next == NULL)
-		return (0);
-	else
-		return (addmap(new, lst->next, f));
+	return (addmap(new, lst->next, f));
 }
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))

@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 06:51:07 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 01:50:07 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:17:34 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ static char	*create_str(char const *src, size_t len)
 
 static int	store_strs(char **strs, size_t len, char const *src, char c)
 {
-	char const		*p;
-	char const		*prev;
-	unsigned int	i;
+	char const	*p;
+	char const	*prev;
+	size_t		i;
 
 	p = ft_strchr(src, c);
 	prev = src;

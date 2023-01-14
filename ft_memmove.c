@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:04:18 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 06:01:04 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:05:30 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	*ft_memmove(void *buf1, const void *buf2, size_t n)
 {
 	unsigned char	*b1;
 	unsigned char	*b2;
-	int				i;
+	size_t			i;
 
 	b1 = (unsigned char *)buf1;
 	b2 = (unsigned char *)buf2;
 	if (b1 < b2)
 	{
 		i = 0;
-		while (i < (int)n)
+		while (i < n)
 		{
 			b1[i] = b2[i];
 			i++;
@@ -31,11 +31,11 @@ void	*ft_memmove(void *buf1, const void *buf2, size_t n)
 	}
 	else
 	{
-		i = n - 1;
-		while (i >= 0)
+		i = 0;
+		while (i < n)
 		{
-			b1[i] = b2[i];
-			i--;
+			b1[(n - 1) - i] = b2[(n - 1) - i];
+			i++;
 		}
 	}
 	return ((void *)b1);

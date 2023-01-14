@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 07:48:39 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 06:19:07 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 03:56:28 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
+	size_t	len;
+	size_t	i;
 
-	i = (int)ft_strlen(s);
-	while (i >= 0)
+	len = ft_strlen(s);
+	i = 0;
+	while (i < len + 1)
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
-		i--;
+		if (s[len - i] == c)
+			return ((char *)(s + len - i));
+		i++;
 	}
 	return (NULL);
 }
@@ -33,6 +35,5 @@ char	*ft_strrchr(const char *s, int c)
 //     printf("%s\n", ft_strrchr("123453ab", '1'));
 //     printf("%s\n", ft_strrchr("123453ab", '3'));
 //     printf("%s\n", ft_strrchr("123453ab", '\0'));
-//     if (ft_strrchr("123453ab", 'c') == NULL)
-//         printf("NULL\n");
+//     printf("%s\n", ft_strrchr("123453ab", 'c'));
 // }

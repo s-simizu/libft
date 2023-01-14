@@ -6,38 +6,32 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 03:09:44 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 09:12:48 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/14 16:37:40 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	addmap(t_list **new, t_list *lst, void *(*f)(void *))
-{
-	t_list	*node;
-
-	if (lst == NULL)
-		return (0);
-	node = ft_lstnew(f(lst->content));
-	if (node == NULL)
-		return (-1);
-	ft_lstadd_back(new, node);
-	return (addmap(new, lst->next, f));
-}
-
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*root;
 	t_list	*new;
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	new = NULL;
-	if (addmap(&new, lst, f) == -1)
+	root = NULL;
+	while (lst != NULL)
 	{
-		ft_lstclear(&new, del);
-		return (NULL);
+		new = ft_lstnew(f(lst->content));
+		if (new == NULL)
+		{
+			ft_lstclear(&root, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&root, new);
+		lst = lst->next;
 	}
-	return (new);
+	return (root);
 }
 
 // #include <stdio.h>
@@ -75,12 +69,12 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 // 	lst = NULL;
 // 	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("aiueo")));
-// 	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("bazz")));
-// 	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("carry")));
+// 	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("boss")));
+// 	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("cat")));
 // 	ft_lstadd_front(&lst, ft_lstnew(ft_strdup("zoo")));
 // 	ft_lstiter(lst, test_print);
 // 	printf("\n");
-// 	mapped = ft_lstmap(lst, upper, del);
+// 	mapped = ft_lstmap(lst, nop, del);
 // 	ft_lstiter(mapped, test_print);
 // 	printf("%d\n", ft_lstsize(mapped));
 // 	printf("%s\n", (const char *)(ft_lstlast(mapped)->content));

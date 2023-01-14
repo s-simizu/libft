@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:54:50 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 05:37:58 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:11:19 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ static size_t	intlen(unsigned int abs)
 static char	*create_str(unsigned int abs, int neg, size_t len)
 {
 	char	*s;
+	size_t	i;
 
 	s = ft_calloc(len + neg + 1, sizeof(char));
 	if (s == NULL)
 		return (NULL);
-	while (len > 0)
+	i = 0;
+	while (i < len)
 	{
-		s[len + neg - 1] = (abs % 10) + '0';
+		s[len - i + neg - 1] = (abs % 10) + '0';
 		abs /= 10;
-		len--;
+		i++;
 	}
 	if (neg)
 		s[0] = '-';

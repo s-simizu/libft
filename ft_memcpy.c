@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 03:47:09 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 06:09:39 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:17:11 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *buf1, const void *buf2, size_t n)
 {
 	unsigned char	*b1;
 	unsigned char	*b2;
-	unsigned int	i;
+	size_t			i;
 
 	b1 = (unsigned char *)buf1;
 	b2 = (unsigned char *)buf2;

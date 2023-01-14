@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:44:08 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 01:53:35 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:21:32 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_inset(char c, char const *set)
 {
-	size_t			len;
-	unsigned int	i;
+	size_t	len;
+	size_t	i;
 
 	len = ft_strlen(set);
 	i = 0;
@@ -30,9 +30,9 @@ static int	is_inset(char c, char const *set)
 
 static size_t	trimmed_len(char const *s, char const *set)
 {
-	size_t			len;
-	size_t			slen;
-	unsigned int	i;
+	size_t	len;
+	size_t	slen;
+	size_t	i;
 
 	len = 0;
 	slen = ft_strlen(s);
@@ -48,10 +48,10 @@ static size_t	trimmed_len(char const *s, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char			*new;
-	size_t			nlen;
-	unsigned int	ni;
-	unsigned int	si;
+	char	*new;
+	size_t	nlen;
+	size_t	ni;
+	size_t	si;
 
 	if (s1 == NULL || set == NULL)
 		return (NULL);

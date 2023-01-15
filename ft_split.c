@@ -6,12 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 06:51:07 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/15 12:58:27 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/16 01:28:06 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static void	free_all(char **strs)
 {
@@ -42,6 +41,8 @@ static size_t	count_strs(char const *s, char c)
 		prev = p + 1;
 		p = ft_strchr(prev, c);
 	}
+	if (*prev == '\0')
+		counter--;
 	return (counter);
 }
 
@@ -90,7 +91,6 @@ char	**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	len = count_strs(s, c);
-	printf("%zu\n", len);
 	strs = ft_calloc(len + 1, sizeof(char *));
 	if (strs == NULL)
 		return (NULL);
@@ -103,22 +103,22 @@ char	**ft_split(char const *s, char c)
 }
 
 // #include <stdio.h>
-int	main(void)
-{
-	char	**strs;
+// int	main(void)
+// {
+// 	char	**strs;
 
-	strs = ft_split("a,b,c,d,e", ',');
-	for (int i = 0; strs[i] != NULL; i++)
-		printf("%s\n", strs[i]);
-	printf("-----\n");
-	strs = ft_split("  aiueo   abc 123    ", ' ');
-	for (int i = 0; strs[i] != NULL; i++)
-		printf("%s\n", strs[i]);
-	printf("-----\n");
-	strs = ft_split("     ", ' ');
-	for (int i = 0; strs[i] != NULL; i++)
-		printf("%s\n", strs[i]);
-	printf("-----\n");
-    if (ft_split(NULL, ' ') == NULL)
-        printf("NULL\n");
-}
+// 	strs = ft_split("a,b,c,d,e", ',');
+// 	for (int i = 0; strs[i] != NULL; i++)
+// 		printf("%s\n", strs[i]);
+// 	printf("-----\n");
+// 	strs = ft_split("  aiueo   abc 123    ", ' ');
+// 	for (int i = 0; strs[i] != NULL; i++)
+// 		printf("%s\n", strs[i]);
+// 	printf("-----\n");
+// 	strs = ft_split("     ", ' ');
+// 	for (int i = 0; strs[i] != NULL; i++)
+// 		printf("%s\n", strs[i]);
+// 	printf("-----\n");
+//     if (ft_split(NULL, ' ') == NULL)
+//         printf("NULL\n");
+// }

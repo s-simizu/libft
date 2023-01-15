@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 02:53:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 05:17:33 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/16 01:41:06 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	if (lst == NULL || del == NULL)
 		return ;
 	delall(*lst, del);
+	*lst = NULL;
 }

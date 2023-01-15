@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:26:20 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 02:05:19 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 06:44:43 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*mapped;
-	size_t			len;
-	unsigned int	i;
+	char	*mapped;
+	size_t	len;
+	size_t	i;
 
 	len = ft_strlen(s);
 	mapped = ft_calloc(len, sizeof(char));

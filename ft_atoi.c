@@ -6,23 +6,35 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:08:45 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/11 23:28:58 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:24:55 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	calc(const char *str, int i, int neg)
+static long	calc(const char *str, int i, int neg)
 {
-	int	val;
+	long	long_min;
+	long	val;
+	int		ofuf;
 
+	long_min = -__LONG_MAX__ - 1;
 	val = 0;
+	ofuf = 0;
 	while (ft_isdigit(str[i]))
 	{
+		if (val < long_min / 10.0)
+			ofuf = 1;
 		val *= 10;
 		val -= (str[i] - '0');
+		if (val > 0 || val == long_min)
+			ofuf = 1;
 		i++;
 	}
+	if (ofuf && neg)
+		return (long_min);
+	if (ofuf && !neg)
+		return (__LONG_MAX__);
 	if (neg)
 		return (val);
 	else
@@ -47,23 +59,25 @@ int	ft_atoi(const char *str)
 		neg = 1;
 		i++;
 	}
-	return (calc(str, i, neg));
+	return ((int)calc(str, i, neg));
 }
 
 // #include <stdio.h>
 // #include <stdlib.h>
 // int	main(void)
 // {
-// 	printf("%d\n", atoi("+2147483647"));
-// 	printf("%d\n", atoi("-2147483648"));
-// 	printf("%d\n", atoi("-2147483648999"));
-// 	printf("%d\n", atoi("++123"));
-// 	printf("%d\n", atoi("aiueo"));
-// 	printf("%d\n", atoi("     -123      "));
 // 	printf("%d\n", ft_atoi("+2147483647"));
 // 	printf("%d\n", ft_atoi("-2147483648"));
-// 	printf("%d\n", ft_atoi("-214748364999"));
+// 	printf("%d\n", ft_atoi("9223372036854775806"));
+// 	printf("%d\n", ft_atoi("-9223372036854775807"));
 // 	printf("%d\n", ft_atoi("++123"));
 // 	printf("%d\n", ft_atoi("aiueo"));
 // 	printf("%d\n", ft_atoi("     -123      "));
+// 	printf("%d\n", atoi("+2147483647"));
+// 	printf("%d\n", atoi("-2147483648"));
+// 	printf("%d\n", atoi("9223372036854775806"));
+// 	printf("%d\n", atoi("-9223372036854775807"));
+// 	printf("%d\n", atoi("++123"));
+// 	printf("%d\n", atoi("aiueo"));
+// 	printf("%d\n", atoi("     -123      "));
 // }

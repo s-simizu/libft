@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:44:08 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/15 04:21:32 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:28:08 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,48 +28,55 @@ static int	is_inset(char c, char const *set)
 	return (0);
 }
 
-static size_t	trimmed_len(char const *s, char const *set)
+size_t	trim_count(char const *s, size_t len, char const *set)
 {
-	size_t	len;
-	size_t	slen;
+	size_t	counter;
 	size_t	i;
 
-	len = 0;
-	slen = ft_strlen(s);
+	counter = 0;
 	i = 0;
-	while (i < slen)
+	while (i < len)
 	{
 		if (!is_inset(s[i], set))
-			len++;
+			break ;
+		counter++;
 		i++;
 	}
-	return (len);
+	if (counter == len)
+		return (counter);
+	i = 0;
+	while (i < len)
+	{
+		if (!is_inset(s[len - i - 1], set))
+			break ;
+		counter++;
+		i++;
+	}
+	return (counter);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*new;
 	size_t	nlen;
-	size_t	ni;
-	size_t	si;
+	size_t	slen;
+	size_t	i;
 
 	if (s1 == NULL || set == NULL)
 		return (NULL);
-	nlen = trimmed_len(s1, set);
+	slen = ft_strlen(s1);
+	nlen = slen - trim_count(s1, slen, set);
 	new = ft_calloc(nlen + 1, sizeof(char));
 	if (new == NULL)
 		return (NULL);
-	ni = 0;
-	si = 0;
-	while (ni < nlen)
+	i = 0;
+	while (i < slen)
 	{
-		if (!is_inset(s1[si], set))
-		{
-			new[ni] = s1[si];
-			ni++;
-		}
-		si++;
+		if (!is_inset(s1[i], set))
+			break ;
+		i++;
 	}
+	ft_strlcpy(new, s1 + i, nlen + 1);
 	return (new);
 }
 
@@ -77,8 +84,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 // int	main(void)
 // {
 // 	printf("%s\n", ft_strtrim("   12 3 45   ", " "));
-// 	printf("%s\n", ft_strtrim("   12 3 45   ", " 123"));
-// 	printf("%s\n", ft_strtrim("   12 3 45   ", " 12345"));
+// 	printf("%s\n", ft_strtrim("   12 3 45   ", " 12"));
+// 	printf("%s\n", ft_strtrim("   12 3 45   ", " 1245"));
 // 	printf("%s\n", ft_strtrim("   12 3 45   ", NULL));
 // 	printf("%s\n", ft_strtrim(NULL, "123"));
 // }

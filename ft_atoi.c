@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:08:45 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/15 11:24:55 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:02:43 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 static long	calc(const char *str, int i, int neg)
 {
-	long	long_min;
 	long	val;
 	int		ofuf;
 
-	long_min = -__LONG_MAX__ - 1;
 	val = 0;
 	ofuf = 0;
 	while (ft_isdigit(str[i]))
 	{
-		if (val < long_min / 10.0)
+		if (val < LONG_MIN / 10.0)
 			ofuf = 1;
 		val *= 10;
 		val -= (str[i] - '0');
-		if (val > 0 || val == long_min)
+		if (val > 0 || val == LONG_MIN)
 			ofuf = 1;
 		i++;
 	}
 	if (ofuf && neg)
-		return (long_min);
+		return (LONG_MIN);
 	if (ofuf && !neg)
-		return (__LONG_MAX__);
+		return (LONG_MAX);
 	if (neg)
 		return (val);
 	else

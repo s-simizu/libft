@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 06:16:06 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/15 08:01:39 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:11:54 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dlen;
 	size_t	ret;
-	int		i;
 
 	if (dst == NULL && dstsize == 0)
 		return (ft_strlen(src));
@@ -27,19 +26,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		ret = dstsize + ft_strlen(src);
 	if (dstsize == 0)
 		return (ret);
-	i = 0;
-	while (dlen + i < dstsize - 1)
-	{
-		if (src[i] == '\0')
-			break ;
-		dst[dlen + i] = src[i];
-		i++;
-	}
-	dst[dlen + i] = '\0';
+	if (dlen < dstsize)
+		ft_strlcpy(dst + dlen, src, dstsize - dlen);
 	return (ret);
 }
 
-// // #include <stdio.h>
+// #include <stdio.h>
 // #include <string.h>
 // int main(void)
 // {
@@ -51,4 +43,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 //     printf("%zu\n", ft_strlcat(dst, "123456789", 0));
 //     printf("%s\n", dst);
 //     printf("%zu\n", ft_strlcat(NULL, "123456789", 0));
+// 	char dst1[15] = "0000";
+//     printf("%zu\n", strlcat(dst1, "abc", 7));
+//     printf("%s\n", dst1);
+//     printf("%zu\n", strlcat(dst1, "123456789", 10));
+//     printf("%s\n", dst1);
+//     printf("%zu\n", strlcat(dst1, "123456789", 0));
+//     printf("%s\n", dst1);
+//     printf("%zu\n", strlcat(NULL, "123456789", 0));
 // }

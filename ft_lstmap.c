@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 03:09:44 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 16:37:40 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:11:03 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // 	ft_lstadd_front(&lst, ft_lstnew(ft_strdup("zoo")));
 // 	ft_lstiter(lst, test_print);
 // 	printf("\n");
-// 	mapped = ft_lstmap(lst, nop, del);
+// 	mapped = ft_lstmap(lst, upper, del);
 // 	ft_lstiter(mapped, test_print);
 // 	printf("%d\n", ft_lstsize(mapped));
 // 	printf("%s\n", (const char *)(ft_lstlast(mapped)->content));

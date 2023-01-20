@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 02:35:02 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/14 04:25:20 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:59:36 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	if (lst == NULL)
-		return (0);
-	return (ft_lstsize(lst->next) + 1);
+	int	size;
+
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }

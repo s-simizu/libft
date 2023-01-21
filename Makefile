@@ -6,7 +6,7 @@
 #    By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 00:18:44 by sshimizu          #+#    #+#              #
-#    Updated: 2023/01/15 05:58:17 by sshimizu         ###   ########.fr        #
+#    Updated: 2023/01/21 13:30:34 by sshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar
-ARFALGS = -r
+ARFLAGS = r
 OBJS = $(SRCS:.c=.o)
 B_OBJS = $(B_SRCS:.c=.o)
 
@@ -40,8 +40,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $?
 
-bonus: $(OBJS) $(B_OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $?
+bonus:
+	make all "OBJS+=$(B_OBJS)"
 
 clean:
 	rm -f $(OBJS) $(B_OBJS)

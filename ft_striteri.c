@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:57:26 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/15 04:17:51 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:30:51 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	size_t	len;
 	size_t	i;
 
+	if (s == NULL || f == NULL)
+		return ;
 	len = ft_strlen(s);
 	i = 0;
 	while (i < len)

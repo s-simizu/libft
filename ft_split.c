@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 06:51:07 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/16 01:28:06 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:22:48 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ static size_t	count_strs(char const *s, char c)
 	char const	*p;
 	char const	*prev;
 
+	if (s[0] == '\0')
+		return (0);
+	if (c == '\0')
+		return (1);
 	counter = 1;
 	p = ft_strchr(s, c);
 	prev = s;

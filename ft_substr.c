@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 04:44:09 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/12 07:59:23 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:13:14 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	slen = ft_strlen(s);
+	if (start > slen)
+		start = slen;
+	if (len > (slen - start))
+		len = slen - start;
 	subs = ft_calloc(len + 1, sizeof(char));
 	if (subs == NULL)
 		return (NULL);
-	if (start > slen)
-		start = slen;
 	ft_strlcpy(subs, &s[start], (len + 1));
 	return (subs);
 }

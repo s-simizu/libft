@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 01:26:20 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/15 06:44:43 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:26:17 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	len;
 	size_t	i;
 
+	if (s == NULL || f == NULL)
+		return (NULL);
 	len = ft_strlen(s);
-	mapped = ft_calloc(len, sizeof(char));
+	mapped = ft_calloc(len + 1, sizeof(char));
 	if (mapped == NULL)
 		return (NULL);
 	i = 0;

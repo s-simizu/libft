@@ -6,7 +6,7 @@
 #    By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 00:18:44 by sshimizu          #+#    #+#              #
-#    Updated: 2023/01/21 13:30:34 by sshimizu         ###   ########.fr        #
+#    Updated: 2023/01/24 13:45:39 by sshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $?
 
 bonus:
-	make all "OBJS+=$(B_OBJS)"
+	@make all "OBJS = $(OBJS) $(B_OBJS)"
 
 clean:
 	rm -f $(OBJS) $(B_OBJS)
